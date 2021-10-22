@@ -4,6 +4,8 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "../Utilities/Math.h"
+
 class Projectile
 {
 public:
@@ -13,9 +15,13 @@ public:
 	void update(float delta_time);
 	void draw(sf::RenderWindow& window);
 
-	void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; };
+	bool isColliding(sf::Vector2f start, sf::Vector2f end);
+
+	void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
+	void setColor(sf::Color color) { this->projectile_shape.setFillColor(color); }
 
 	sf::Vector2f getPosition() { return position; }
+	sf::Vector2f getVelocity() { return velocity; }
 	int getRadius() { return RADIUS; }
 
 private:

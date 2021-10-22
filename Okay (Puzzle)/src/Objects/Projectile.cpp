@@ -61,3 +61,29 @@ void Projectile::draw(sf::RenderWindow& window)
 
 	window.draw(projectile_shape);
 }
+
+bool Projectile::isColliding(sf::Vector2f start, sf::Vector2f end)
+{
+	sf::Vector2f border_vector(end.x - start.x, end.y - start.y);
+	sf::Vector2f circle_vector(position.x - start.x, position.y - start.y);
+
+	float dot_product = dot(circle_vector, normalize(border_vector));
+	sf::Vector2f point_on_line;
+	if (dot_product <= 0)
+	{
+		point_on_line = start;
+	}
+	else if (dot_product >= length(border_vector))
+	{
+		point_on_line = end;
+	}
+	else
+	{
+		sf::Vector2f point_length = normalize(border_vector) * dot_product;
+		point_on_line = sf::Vector2f(point_length.x + start.x, point_length.y + start.y);
+	}
+
+	float x = position.x - point_on_line.x;
+	float y = position.y - point_on_line.y;
+	return x * x + y * y <= RADIUS * RADIUS;
+}
