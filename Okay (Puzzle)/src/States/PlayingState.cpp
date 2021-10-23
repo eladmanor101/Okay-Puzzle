@@ -19,10 +19,12 @@ void PlayingState::init()
 	sf::ConvexShape t1;
 	t1.setPointCount(3);
 
-	t1.setPoint(0, sf::Vector2f(WIDTH / 3, HEIGHT / 3));
-	t1.setPoint(1, sf::Vector2f(WIDTH / 3 + 50, HEIGHT / 3));
-	t1.setPoint(2, sf::Vector2f(WIDTH / 3, HEIGHT / 3 + 50));
+	t1.setPoint(0, sf::Vector2f(0, 0));
+	t1.setPoint(1, sf::Vector2f(50, 0));
+	t1.setPoint(2, sf::Vector2f(0, 50));
+	t1.move(WIDTH / 3, HEIGHT / 3);
 
+	t1.setOrigin(t1.getLocalBounds().width / 2.0f, t1.getLocalBounds().height / 2.0f);
 	shapes.push_back(t1);
 }
 
@@ -38,8 +40,9 @@ void PlayingState::update(float delta_time)
 
 			for (int i = 0; i < it->getPointCount(); i++)
 			{
-				p1 = it->getPoint(i);
-				p2 = it->getPoint((i + 1) % it->getPointCount());
+				p1 = it->getTransform().transformPoint(it->getPoint(i));
+				p2 = it->getTransform().transformPoint(it->getPoint((i + 1) % it->getPointCount()));
+				std::cout << it->getOrigin().x << ' ' << it->getOrigin().y << std::endl;
 
 				if (projectile->isColliding(p1, p2))
 				{
@@ -80,7 +83,6 @@ void PlayingState::update(float delta_time)
 			sf::Color fill_color = it->shape.getFillColor();
 			sf::Color outline_color = it->shape.getOutlineColor();
 
-			std::cout << scale << std::endl;
 			it->shape.setScale(sf::Vector2f(1 + 0.5f * scale, 1 + 0.5f * scale));
 			it->shape.setFillColor(sf::Color(fill_color.r, fill_color.g, fill_color.b, 255 * (1 - scale)));
 			it->shape.setOutlineColor(sf::Color(outline_color.r, outline_color.g, outline_color.b, 255 * (1 - scale)));

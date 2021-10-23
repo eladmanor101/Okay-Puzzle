@@ -12,7 +12,7 @@ ResourceManager::~ResourceManager()
 
 void ResourceManager::loadResources()
 {
-
+	fonts["PressStart2P"].loadFromFile("../Okay (Puzzle)/res/Fonts/PressStart2P.ttf");
 }
 
 sf::Texture& ResourceManager::getTexture(const std::string& name)

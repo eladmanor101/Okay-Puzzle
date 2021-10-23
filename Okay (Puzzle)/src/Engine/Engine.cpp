@@ -15,7 +15,7 @@ void Engine::init()
 	window.create(sf::VideoMode(800, 800), "Okay?", sf::Style::Close | sf::Style::Titlebar);
 	resource_manager.loadResources();
 
-	pushState(std::make_unique<PlayingState>(*this));
+	pushState(std::make_unique<MenuState>(*this));
 	states.back()->init();
 }
 

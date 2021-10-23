@@ -8,7 +8,7 @@
 #include "../Managers/SettingsManager.h"
 
 #include "../States/State.h"
-#include "../States/PlayingState.h"
+#include "../States/MenuState.h"
 
 #include "../Utilities/Random.h"
 

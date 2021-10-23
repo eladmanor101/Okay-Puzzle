@@ -145,6 +145,8 @@
     <ClCompile Include="src\Managers\ResourceManager.cpp" />
     <ClCompile Include="src\Managers\SettingsManager.cpp" />
     <ClCompile Include="src\Objects\Projectile.cpp" />
+    <ClCompile Include="src\States\EditorState.cpp" />
+    <ClCompile Include="src\States\MenuState.cpp" />
     <ClCompile Include="src\States\State.cpp" />
     <ClCompile Include="src\States\PlayingState.cpp" />
     <ClCompile Include="src\Utilities\Math.cpp" />
@@ -156,10 +158,15 @@
     <ClInclude Include="src\Managers\ResourceManager.h" />
     <ClInclude Include="src\Managers\SettingsManager.h" />
     <ClInclude Include="src\Objects\Projectile.h" />
+    <ClInclude Include="src\States\EditorState.h" />
+    <ClInclude Include="src\States\MenuState.h" />
     <ClInclude Include="src\States\State.h" />
     <ClInclude Include="src\States\PlayingState.h" />
     <ClInclude Include="src\Utilities\Math.h" />
     <ClInclude Include="src\Utilities\Random.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\Fonts\PressStart2P.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
