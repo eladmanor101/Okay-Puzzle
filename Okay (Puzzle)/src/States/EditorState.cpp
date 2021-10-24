@@ -22,10 +22,17 @@ void EditorState::update(float delta_time)
 
 void EditorState::render(sf::RenderWindow& window)
 {
+	window.clear(sf::Color::Black);
 
+
+
+	window.display();
 }
 
 void EditorState::handleEvents(sf::Event& e)
 {
-
+	if (e.type == sf::Event::KeyPressed)
+	{
+		engine->popState();
+	}
 }

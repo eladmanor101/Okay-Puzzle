@@ -23,7 +23,7 @@ sf::Texture& ResourceManager::getTexture(const std::string& name)
 	{
 		return texture_itr->second;
 	}
-
+	
 	return default_texture;
 }
 

@@ -148,7 +148,7 @@ void PlayingState::handleEvents(sf::Event& e)
 		break;
 
 	case sf::Event::MouseButtonReleased:
-		if (e.mouseButton.button == sf::Mouse::Left)
+		if (e.mouseButton.button == sf::Mouse::Left && projectile)
 		{
 			is_aiming = false;
 			sf::Vector2f direction = sf::Vector2f(e.mouseButton.x, e.mouseButton.y) - projectile->getPosition();
