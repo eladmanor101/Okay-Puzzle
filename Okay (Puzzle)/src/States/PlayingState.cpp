@@ -163,12 +163,12 @@ void PlayingState::handleCollision(sf::Vector2f p1, sf::Vector2f p2)
 {
 	sf::Vector2f velocity = projectile->getVelocity();
 	sf::Vector2f surface_vector(p1.x - p2.x, p1.y - p2.y);
-	sf::Vector2f surface_normal = normalize(sf::Vector2f(-surface_vector.y, surface_vector.x));
+	sf::Vector2f surface_normal = math::normalize(sf::Vector2f(-surface_vector.y, surface_vector.x));
 
-	if (dot(surface_normal, p1 - projectile->getPosition()) < 0)
+	if (math::dot(surface_normal, p1 - projectile->getPosition()) < 0)
 	{
 		surface_normal = -surface_normal;
 	}
 
-	projectile->setVelocity(velocity - 2 * dot(projectile->getVelocity(), surface_normal) * surface_normal);
+	projectile->setVelocity(velocity - 2 * math::dot(projectile->getVelocity(), surface_normal) * surface_normal);
 }

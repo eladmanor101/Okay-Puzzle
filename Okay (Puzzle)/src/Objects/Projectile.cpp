@@ -67,19 +67,19 @@ bool Projectile::isColliding(sf::Vector2f start, sf::Vector2f end)
 	sf::Vector2f border_vector(end.x - start.x, end.y - start.y);
 	sf::Vector2f circle_vector(position.x - start.x, position.y - start.y);
 
-	float dot_product = dot(circle_vector, normalize(border_vector));
+	float dot_product = math::dot(circle_vector, math::normalize(border_vector));
 	sf::Vector2f point_on_line;
 	if (dot_product <= 0)
 	{
 		point_on_line = start;
 	}
-	else if (dot_product >= length(border_vector))
+	else if (dot_product >= math::length(border_vector))
 	{
 		point_on_line = end;
 	}
 	else
 	{
-		sf::Vector2f point_length = normalize(border_vector) * dot_product;
+		sf::Vector2f point_length = math::normalize(border_vector) * dot_product;
 		point_on_line = sf::Vector2f(point_length.x + start.x, point_length.y + start.y);
 	}
 
